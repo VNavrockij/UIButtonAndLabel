@@ -16,11 +16,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        label.isHidden = true
+        label.font = label.font.withSize(35)
+        label.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        
+        button.setTitle("Get result", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .green
+        
     }
 
     @IBAction func pressedBtn(_ sender: UIButton) {
+        label.isHidden = false
         label.text = "Hello"
+
     }
     
 }
