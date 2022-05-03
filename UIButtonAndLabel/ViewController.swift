@@ -10,8 +10,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
-    
     @IBOutlet weak var button: UIButton!
+    
+    @IBOutlet var actionButtons: [UIButton]!
     
     
     override func viewDidLoad() {
@@ -19,17 +20,36 @@ class ViewController: UIViewController {
         
         label.isHidden = true
         label.font = label.font.withSize(35)
-        label.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         
-        button.setTitle("Get result", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .green
+        button.isHidden = true
+        
+        for button in actionButtons {
+            button.setTitleColor(.blue, for: .normal)
+            button.backgroundColor = .green
+        }
+        
+        button.setTitle("Clear", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .red
         
     }
 
     @IBAction func pressedBtn(_ sender: UIButton) {
+        
         label.isHidden = false
-        label.text = "Hello"
+        button.isHidden = false
+        
+        if sender.tag == 0 {
+            label.text = "Hello, world!"
+            label.textColor = .red
+        } else if sender.tag == 1 {
+            label.text = "Hi there!"
+            label.textColor = .blue
+        } else if sender.tag == 2 {
+            label.isHidden = true
+            button.isHidden = true
+        }
+        
 
     }
     
